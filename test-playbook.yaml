@@ -1,0 +1,15 @@
+---
+- name: Setup Ruckus Infrastructure
+  hosts: test-switches
+  connection: local
+  gather_facts: no
+
+  tasks:
+    # - name: Create Ruckus VLAN (780)
+    #   ent_command:
+    #     commands:
+    #       - show vlan 100
+    - name: make sure vlan 100 does not exist in switch 10.20.3.18
+      ent_vlan:
+        vlan_id: 100
+        state: absent
